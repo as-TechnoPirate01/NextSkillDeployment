@@ -12,7 +12,7 @@ function EducatorNoticeBoard() {
     // Define fetchNotices outside of useEffect to use it elsewhere
     const fetchNotices = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/notices');
+            const response = await fetch('https://nextskill-9bug.onrender.com/api/notices');
             if (response.ok) {
                 const allNotices = await response.json();
                 const filteredNotices = allNotices.filter(notice =>
@@ -34,7 +34,7 @@ function EducatorNoticeBoard() {
     const handlePostNotice = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/notices', {
+            const response = await fetch('https://nextskill-9bug.onrender.com/api/notices', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ function EducatorReleaseGrades() {
 
   const fetchSubmissions = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/submissions-grades');
+      const response = await axios.get('https://nextskill-9bug.onrender.com/api/submissions-grades');
       setSubmissions(response.data);
     } catch (error) {
       console.error('Failed to fetch submissions:', error);
@@ -19,7 +19,7 @@ function EducatorReleaseGrades() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users');
+      const response = await axios.get('https://nextskill-9bug.onrender.com/api/users');
       const studentData = response.data.filter(user => user.role === 'student');
       setStudents(studentData);
     } catch (error) {
@@ -35,7 +35,7 @@ function EducatorReleaseGrades() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await axios.post('http://localhost:5000/api/assign-grade', {
+        await axios.post('https://nextskill-9bug.onrender.com/api/assign-grade', {
             userId: selectedStudent,
             quizId: selectedSubmission,
             grade: grade,

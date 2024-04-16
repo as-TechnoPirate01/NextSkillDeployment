@@ -16,7 +16,7 @@ function NoticeBoard({ audience = 'student' }) {
     useEffect(() => {
         const fetchNotices = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/notices');
+                const response = await fetch('https://nextskill-9bug.onrender.com/api/notices');
                 if (response.ok) {
                     const allNotices = await response.json();
                     const filteredNotices = allNotices.filter(notice => 

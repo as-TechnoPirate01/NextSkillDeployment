@@ -10,14 +10,14 @@ function ExploreCourses() {
     const videoElementsRef = useRef({});
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/courses')
+        fetch('https://nextskill-9bug.onrender.com/api/courses')
             .then(response => response.json())
             .then(data => {
                 setCourses([{ _id: 'All', title: 'All Courses' }, ...data]);
             })
             .catch(error => console.error('Error fetching courses:', error));
 
-        fetch('http://localhost:5000/api/videos')
+        fetch('https://nextskill-9bug.onrender.com/api/videos')
             .then(response => response.json())
             .then(data => {
                 setVideos(data);
@@ -39,7 +39,7 @@ function ExploreCourses() {
             text: feedback
         };
 
-        fetch('http://localhost:5000/api/feedback', {
+        fetch('https://nextskill-9bug.onrender.com/api/feedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ function ExploreCourses() {
     const renderSelectedVideo = () => (
         <div className="selected-video-container">
             <video
-                src={`http://localhost:5000/${selectedVideo.videoFile.replace('\\', '/')}`}
+                src={`https://nextskill-9bug.onrender.com/${selectedVideo.videoFile.replace('\\', '/')}`}
                 controls
                 autoPlay
                 style={{ width: '100%', maxHeight: '80vh' }}
@@ -99,7 +99,7 @@ function ExploreCourses() {
                         <div key={video._id} className="video-preview" onClick={() => handleVideoSelect(video)}>
                             <video
                                 ref={el => videoElementsRef.current[video._id] = el}
-                                src={`http://localhost:5000/${video.videoFile.replace('\\', '/')}`}
+                                src={`https://nextskill-9bug.onrender.com/${video.videoFile.replace('\\', '/')}`}
                                 muted
                                 loop
                                 style={{ width: '100%', height: '100%' }}

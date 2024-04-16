@@ -60,7 +60,7 @@ function AdminDashboard() {
     const handleCourseSave = async (event) => {
         event.preventDefault();
         console.log('Saving course:', courseInfo);
-        const url = courseInfo._id ? `http://localhost:5000/api/courses/${courseInfo._id}` : 'http://localhost:5000/api/courses';
+        const url = courseInfo._id ? `https://nextskill-9bug.onrender.com/api/courses/${courseInfo._id}` : 'https://nextskill-9bug.onrender.com/api/courses';
         const method = courseInfo._id ? 'PUT' : 'POST';
 
         try {

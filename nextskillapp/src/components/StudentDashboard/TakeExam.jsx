@@ -11,7 +11,7 @@ function TakeExam() {
     const [answers, setAnswers] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/quizzes')
+        axios.get('https://nextskill-9bug.onrender.com/api/quizzes')
             .then(response => setQuizzes(response.data))
             .catch(error => console.error('Error fetching quizzes:', error));
     }, []);
@@ -40,7 +40,7 @@ function TakeExam() {
             answer: answers[question._id]  
         }));
     
-        axios.post('http://localhost:5000/api/submit-quiz', {
+        axios.post('https://nextskill-9bug.onrender.com/api/submit-quiz', {
             quizId: currentQuiz._id,
             answers: formattedAnswers
         })

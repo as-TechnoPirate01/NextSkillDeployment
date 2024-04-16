@@ -67,7 +67,7 @@ function validatePhoneNumber(phoneNumber) {
   
     // Additional client-side validation can be added here
     try {
-      const response = await axios.post('http://localhost:5000/api/users', formData);
+      const response = await axios.post('https://nextskill-9bug.onrender.com/api/users', formData);
       console.log(response.data); // For debugging
       alert('Signup successful!');
       setFormData({

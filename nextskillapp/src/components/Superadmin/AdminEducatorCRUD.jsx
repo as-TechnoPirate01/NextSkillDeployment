@@ -13,7 +13,7 @@ const AdminEducatorCRUD = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/users');
+            const response = await axios.get('https://nextskill-9bug.onrender.com/api/users');
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);
@@ -26,7 +26,7 @@ const AdminEducatorCRUD = () => {
         const updatedLastName = prompt("Edit Last Name", user.lastName);
         if (updatedFirstName && updatedLastName) {
             try {
-                const response = await axios.put(`http://localhost:5000/api/users/${user._id}`, {
+                const response = await axios.put(`https://nextskill-9bug.onrender.com/api/users/${user._id}`, {
                     ...user,
                     firstName: updatedFirstName,
                     lastName: updatedLastName,
@@ -40,7 +40,7 @@ const AdminEducatorCRUD = () => {
     };
 
     const handleDeleteUser = async (id) => {
-        const url = `http://localhost:5000/api/users/${id}`;
+        const url = `https://nextskill-9bug.onrender.com/api/users/${id}`;
         console.log('Attempting to delete at URL:', url); // Debugging log
         try {
           await axios.delete(url);

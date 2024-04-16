@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', credentials);
+      const response = await axios.post('https://nextskill-9bug.onrender.com/api/login', credentials);
       setUser(response.data); // Set user data in context
       localStorage.setItem('user', JSON.stringify(response.data)); // Also set user data in localStorage
       navigateToDashboard(response.data.role);

@@ -58,9 +58,6 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "keywords": [],
-  "author": "Akshay Saharajan",
-  "license": "ISC",
-  "devDependencies": {
-    "gh-pages": "^6.1.1"
-  }
+  "author": "",
+  "license": "ISC"
 }

@@ -18,7 +18,7 @@ function StudentViewGrades() {
     useEffect(() => {
         async function fetchSubmissions() {
             try {
-                const response = await axios.get('http://localhost:5000/api/submissions');
+                const response = await axios.get('https://nextskill-9bug.onrender.com/api/submissions');
                 const validSubmissions = response.data.filter(sub => sub.percentage !== undefined); // Filter out invalid entries
                 setSubmissions(validSubmissions);
                 if (validSubmissions.length > 0) {

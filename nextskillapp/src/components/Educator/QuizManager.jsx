@@ -70,7 +70,7 @@ function ManageQuizzes() {
   
     // Change the URL to match your server's port
     try {
-      const response = await axios.post('http://localhost:5000/api/quizzes', newQuiz);
+      const response = await axios.post('https://nextskill-9bug.onrender.com/api/quizzes', newQuiz);
       console.log('Quiz Submitted Successfully:', response.data);
       setQuizzes([...quizzes, response.data]);
       setQuizTitle('');
