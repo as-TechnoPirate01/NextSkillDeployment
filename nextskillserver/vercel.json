@@ -8,8 +8,18 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "/uploads/$1",
+      "continue": true
+    },
+    {
       "src": "/(.*)",
-      "dest": "server.js"
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/server.js"
     }
   ]
 }
