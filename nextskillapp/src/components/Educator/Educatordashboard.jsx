@@ -41,15 +41,15 @@ function AdminDashboard() {
             <button className="sidebar-btn" onClick={() => setShowSection('viewAnalytics')}>
                 <FontAwesomeIcon icon={faChartLine} /> View Analytics
             </button>
-            <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
+            {/* <button className="sidebar-btn" onClick={() => setShowSection('manageAssignments')}>
                 <FontAwesomeIcon icon={faTasks} /> Manage Assignments
-            </button>
+            </button> */}
             <button className="sidebar-btn" onClick={() => setShowSection('QuizManager')}>
                 <FontAwesomeIcon icon={faEdit} /> Manage Quizzes
             </button> 
-            <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>
+            {/* <button className="sidebar-btn" onClick={() => setShowSection('EducatorReleaseGrades')}>
                 <FontAwesomeIcon icon={faGraduationCap} /> EducatorReleaseGrades
-            </button>
+            </button> */}
             <button className="sidebar-btn" onClick={() => setShowSection('EducatorNoticeBoard')}>
                 <FontAwesomeIcon icon={faGraduationCap} /> EducatorNoticeBoard
             </button>
@@ -60,7 +60,7 @@ function AdminDashboard() {
     const handleCourseSave = async (event) => {
         event.preventDefault();
         console.log('Saving course:', courseInfo);
-        const url = courseInfo._id ? `https://nextskill-9bug.onrender.com/api/courses/${courseInfo._id}` : 'https://nextskill-9bug.onrender.com/api/courses';
+        const url = courseInfo._id ? `http://localhost:5000/api/courses/${courseInfo._id}` : 'http://localhost:5000/api/courses';
         const method = courseInfo._id ? 'PUT' : 'POST';
 
         try {
@@ -101,31 +101,41 @@ function AdminDashboard() {
                 
             </section>
             <div className="admin-dashboard">
-                {renderSidebar()}
-                <div className="main-content">
-                    <h2>Educator Dashboard</h2>
-                    <div  style={{ width: '70em' }}>
-                  
-                </div>
-                    {/* Render forms or pages based on the selected section */}
-                    {showSection === 'addVideo' && <AddVideoForm videoInfo={videoInfo} />}
-                    {showSection === 'addCourse' && (
-                        <CourseForm 
-                            course={courseInfo} 
-                            onSave={handleCourseSave} 
-                            onChange={handleCourseChange} 
-                            saving={false}
-                        />
-                    )}
-                    {showSection === 'viewCourses' && <CoursesPage />}
-                    {showSection === 'viewAnalytics' && <AnalyticsPage />}
-                    {showSection === 'QuizManager' && <QuizManager />}
-                    {showSection === 'EducatorReleaseGrades' && <EducatorReleaseGrades />}
-                    {showSection === 'EducatorNoticeBoard' && <EducatorNoticeBoard />}
-                   
+            {renderSidebar()}
+            <div className="main-content">
+                <h2>Educator Dashboard</h2>
+                <div className="dashboard-intro">
+                    <p>Welcome back, <strong>Educator!!</strong></p>
                     
                 </div>
+                <div className="upcoming-events">
+            <h3>Upcoming Events</h3>
+            <ul>
+                <li><strong>Web Development Workshop</strong> - April 20th, 2024</li>
+                <li><strong>AI in Education Conference</strong> - May 5th, 2024</li>
+                <li><strong>End of Semester Grades Submission</strong> - June 10th, 2024</li>
+            </ul>
+        </div>
+                
+
+                {/* Render forms or pages based on the selected section */}
+                {showSection === 'addVideo' && <AddVideoForm videoInfo={videoInfo} />}
+                {showSection === 'addCourse' && (
+                    <CourseForm 
+                        course={courseInfo} 
+                        onSave={handleCourseSave} 
+                        onChange={handleCourseChange} 
+                        saving={false}
+                    />
+                )}
+                {showSection === 'viewCourses' && <CoursesPage />}
+                {showSection === 'viewAnalytics' && <AnalyticsPage />}
+                {showSection === 'QuizManager' && <QuizManager />}
+                {showSection === 'EducatorReleaseGrades' && <EducatorReleaseGrades />}
+                {showSection === 'EducatorNoticeBoard' && <EducatorNoticeBoard />}
             </div>
+        </div>
+
 
         </>
     );

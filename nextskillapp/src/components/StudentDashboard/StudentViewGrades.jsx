@@ -6,20 +6,20 @@ import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { jsPDF } from "jspdf";
 import './StudentViewGrades.css';
-
+ 
 Chart.register(...registerables); // Register all components
-
+ 
 function StudentViewGrades() {
     const [submissions, setSubmissions] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [average, setAverage] = useState(null); // Initialize to null to signify no data
-
+    const [average, setAverage] = useState(null);
+ 
     useEffect(() => {
         async function fetchSubmissions() {
             try {
-                const response = await axios.get('https://nextskill-9bug.onrender.com/api/submissions');
-                const validSubmissions = response.data.filter(sub => sub.percentage !== undefined); // Filter out invalid entries
+                const response = await axios.get('http://localhost:5000/api/submissions');
+                const validSubmissions = response.data.filter(sub => sub.percentage !== undefined);
                 setSubmissions(validSubmissions);
                 if (validSubmissions.length > 0) {
                     const total = validSubmissions.reduce((acc, curr) => acc + curr.percentage, 0);
@@ -33,10 +33,10 @@ function StudentViewGrades() {
                 setLoading(false);
             }
         }
-
+ 
         fetchSubmissions();
     }, []);
-
+ 
     function generateCertificate(name) {
         const doc = new jsPDF();
         doc.setFontSize(22);
@@ -51,7 +51,7 @@ function StudentViewGrades() {
         doc.text('NextSkill', 105, 140, null, null, 'center');
         doc.save(`NextSkill_Certificate.pdf`);
     }
-
+ 
     return (
         <div className="grades-container">
             <h2><FontAwesomeIcon icon={faCheckCircle} /> Your Grades</h2>
@@ -60,9 +60,9 @@ function StudentViewGrades() {
             <div className="content-container">
                 <div className="chart-container">
                     {submissions.length > 0 ? (
-                        <Bar 
+                        <Bar
                             data={{
-                                labels: submissions.map(sub => sub.quizId.title),
+                                labels: submissions.map(sub => sub.quizId?.title || 'Unknown Quiz'),
                                 datasets: [{
                                     label: 'Grade Percentage',
                                     data: submissions.map(sub => sub.percentage),
@@ -87,7 +87,7 @@ function StudentViewGrades() {
                         <tbody>
                             {submissions.map((submission) => (
                                 <tr key={submission._id}>
-                                    <td>{submission.quizId.title}</td>
+                                    <td>{submission.quizId?.title || 'Unknown Quiz'}</td>
                                     <td>{submission.percentage ? `${submission.percentage.toFixed(2)}%` : 'Not graded yet'}</td>
                                 </tr>
                             ))}
@@ -102,5 +102,5 @@ function StudentViewGrades() {
         </div>
     );
 }
-
+ 
 export default StudentViewGrades;

@@ -285,3 +285,46 @@ form input[type="submit"]:disabled {
   flex-direction: column; 
   gap: 10px; 
 }
+
+.upcoming-events {
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.upcoming-events h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.upcoming-events ul {
+  list-style: none;
+  padding: 0;
+}
+
+.event-item {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.event-item:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.event-item svg {
+  margin-right: 10px;
+  color: #4a90e2; /* Adjust color to match your theme */
+}
+
+.event-item strong {
+  margin-right: 5px;
+}
